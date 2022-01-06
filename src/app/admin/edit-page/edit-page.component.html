@@ -1,1 +1,40 @@
-<p>edit-page works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <div
+    class="form-control"
+    [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}"
+  >
+    <label for="title">Post Name:</label>
+    <input id="title" type="text" formControlName="title">
+    <div
+      *ngIf="form.get('title').touched && form.get('title').invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('title').errors.required">
+        Enter Post Name
+      </small>
+    </div>
+  </div>
+
+  <div
+    class="form-control"
+    [ngClass]="{invalid: form.get('text').touched && form.get('text').invalid}"
+  >
+    <label>Post Content:</label>
+    <textarea formControlName="text"></textarea>
+    <div
+      *ngIf="form.get('text').touched && form.get('title').invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('text').errors.required">
+        Enter Text
+      </small>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="form.invalid || submitted"
+  >Update</button>
+</form>

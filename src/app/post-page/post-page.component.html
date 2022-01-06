@@ -1,19 +1,18 @@
-<div class="post">
+<div class="post" *ngIf="post; else loading">
   <div class="header">
-    <h1>Post title</h1>
+    <h1>{{ post.title }}</h1>
 
-    <button routerLink="/" class="btn btn-link">მთავარ გვერდზე დაბრუნება</button>
+    <button routerLink="/" class="btn btn-link">Return To The Main Page</button>
   </div>
 
   <div class="info">
-    <strong>ავტორი</strong>
-    <small>12.09.2019</small>
+    <strong>{{ post.author }}</strong>
+    <small>{{ post.date | date: 'dd/MM/yyyy'}}</small>
   </div>
 
-  <div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A consequuntur cupiditate delectus, illo nam numquam sequi sit voluptas? Animi dicta eius eos exercitationem hic minima mollitia obcaecati possimus quaerat qui quidem, rerum ut voluptatem? Asperiores blanditiis est ipsam, iste perferendis porro soluta. Architecto esse eum excepturi fuga id neque ullam.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A consequuntur cupiditate delectus, illo nam numquam sequi sit voluptas? Animi dicta eius eos exercitationem hic minima mollitia obcaecati possimus quaerat qui quidem, rerum ut voluptatem? Asperiores blanditiis est ipsam, iste perferendis porro soluta. Architecto esse eum excepturi fuga id neque ullam.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A consequuntur cupiditate delectus, illo nam numquam sequi sit voluptas? Animi dicta eius eos exercitationem hic minima mollitia obcaecati possimus quaerat qui quidem, rerum ut voluptatem? Asperiores blanditiis est ipsam, iste perferendis porro soluta. Architecto esse eum excepturi fuga id neque ullam.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A consequuntur cupiditate delectus, illo nam numquam sequi sit voluptas? Animi dicta eius eos exercitationem hic minima mollitia obcaecati possimus quaerat qui quidem, rerum ut voluptatem? Asperiores blanditiis est ipsam, iste perferendis porro soluta. Architecto esse eum excepturi fuga id neque ullam.</p>
-  </div>
+  <div> {{ post.text }} </div>
 </div>
+
+<ng-template #loading>
+  <p class="text-center">...loading</p>
+</ng-template>

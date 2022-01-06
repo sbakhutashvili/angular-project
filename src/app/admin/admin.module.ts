@@ -10,6 +10,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './shared/services/auth.service';
 import {SharedModule} from '../shared/shared.module';
 import {AuthGuard} from './shared/services/auth.guard';
+import {FilterPipe} from './shared/filter.pipe';
+import { AlertComponent } from './shared/components/alert/alert.component';
+import {AlertService} from './shared/services/alert.service';
 
 const routes: Routes = [
   {
@@ -50,7 +53,9 @@ const routes: Routes = [
     LoginPageComponent,
     CreatePageComponent,
     EditPageComponent,
-    DashboardPageComponent
+    DashboardPageComponent,
+    FilterPipe,
+    AlertComponent
   ],
   imports: [
     CommonModule,
@@ -60,6 +65,6 @@ const routes: Routes = [
     SharedModule
   ],
   exports: [RouterModule],
-  providers: [AuthService, AuthGuard]
+  providers: [AuthGuard,AlertService]
 })
 export class AdminModule {}
